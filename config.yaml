@@ -1,0 +1,35 @@
+# PDF RAG 시스템 설정 파일
+
+# Ollama 모델 설정
+ollama:
+  llm_model: "llama3"              # 사용할 LLM 모델명
+  embedding_model: "mxbai-embed-large"  # 사용할 임베딩 모델명
+
+# 텍스트 분할 설정
+text_splitter:
+  chunk_size: 1000                 # 청크 크기
+  chunk_overlap: 200               # 청크 간 겹치는 문자 수
+
+# 벡터 저장소 설정
+vectorstore:
+  cache_directory: "chroma_pdf_cache"  # ChromaDB 캐시 디렉토리
+  collection_name: "pdf_documents"     # 컬렉션 이름
+
+# PDF 파일 폴더 설정
+pdfs_directory: "pdfs"                # PDF 파일들이 저장된 폴더 경로
+
+# 시스템 프롬프트 설정
+system_prompt: "You are a helpful assistant. Read the PDF content and answer the question. Translate the answer in Korean with emoji."
+
+# Gradio 인터페이스 설정
+gradio:
+  title: "LLaMA 3 - 다중 PDF 기반 질문 응답 시스템"
+  description: "여러 PDF 파일을 선택하고 질문을 입력하면, 모든 PDF의 내용을 기반으로 LLaMA 3가 한국어로 답변해 줍니다."
+  theme:
+    name: "sky_blue"       # 테마 이름: "sky_blue", "default", "soft", "monochrome"
+    primary_color: "#4FC3F7"  # 주요 색상 (하늘색)
+  output:
+    lines: 20              # 답변 화면 기본 줄 수
+    max_lines: 50          # 답변 화면 최대 줄 수 (스크롤 가능)
+    show_copy_button: true # 복사 버튼 표시 여부
+
